@@ -101,10 +101,32 @@ public class IntArrayWorker
   
   public int getCount(int n){
       int count = 0;
-      for (int i=0; i<matrix.length; i++){
-          for (int j=0; j<matrix[0].length; j++){
+      for (int[] row: matrix){
+          for (int cheese: row){
+                if(cheese==n)
+                    count++;
               }
       }
       return count;
   }
+  
+  public int getLargest(){
+      int count = matrix[0][0];
+      for (int[] row: matrix){
+          for (int cheese: row){
+                if(count < cheese){
+                   count = cheese; 
+              }
+      }
+    }
+    return count;
+    }
+    
+  public int getColTotal(int n){
+      int total = 0;
+      for (int i = 0; i<matrix[0].length; i++){
+          total += matrix[n][i];
+    }  
+    return total;
+    }
 }
