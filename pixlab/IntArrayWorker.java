@@ -124,8 +124,8 @@ public class IntArrayWorker
     
   public int getColTotal(int n){
       int total = 0;
-      for (int i = 0; i<matrix[0].length; i++){
-          total += matrix[n][i];
+      for (int i = 0; i<matrix.length; i++){
+          total += matrix[i][n];
     }  
     return total;
     }
