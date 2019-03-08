@@ -96,6 +96,76 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+  } // END zeroBlue()
+  
+  /** Method to set the red to 0 */
+  public void zeroRed()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+      }
+    }
+  } // END zeroRed()
+  
+  /** Method to set the green to 0 */
+  public void zeroGreen()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+      }
+        }
+  } // END zeroGreen()
+  
+  /** Method to keep only the blue value. */
+  public void keepOnlyBlue()
+  {
+    zeroRed();
+    zeroGreen();
+  } // END zeroBlue()
+  
+  public void greyscale()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      int cRed,cBlue,cGreen,total;
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+          cRed = pixelObj.getRed();
+          cGreen = pixelObj.getGreen();
+          cBlue = pixelObj.getBlue();
+          total = (cRed+cGreen+cBlue)/3;
+          pixelObj.setRed(total);
+          pixelObj.setGreen(total);
+          pixelObj.setBlue(total);
+      }  
+    }
+  }
+  
+  public void negate()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    int cRed,cBlue,cGreen,total;
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        cRed = pixelObj.getRed();
+        cGreen = pixelObj.getGreen();
+        cBlue = pixelObj.getBlue();
+        pixelObj.setRed(255-cRed);
+        pixelObj.setGreen(255-cGreen);
+        pixelObj.setBlue(255-cBlue);
+      }
+    }
   }
   
   /** Method that mirrors the picture around a 
