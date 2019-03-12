@@ -239,6 +239,24 @@ public class Picture extends SimplePicture
     } 
   }
   
+  public void mirrorDiagonal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int length = pixels.length;
+    int width = pixels[0].length;
+    for (int row = 0; row < length; row++)
+    {
+      for (int col = 0; col <= row; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[col][row];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
@@ -253,6 +271,52 @@ public class Picture extends SimplePicture
     {
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
+      {
+        
+        leftPixel = pixels[row][col];      
+        rightPixel = pixels[row]                       
+                         [mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorArms()
+  {
+    int mirrorPoint = 195;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int count = 0;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 158; row < mirrorPoint; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 103; col < 295; col++)
+      {
+        
+        topPixel = pixels[row][col];      
+        bottomPixel = pixels[mirrorPoint-row+mirrorPoint]                       
+                         [col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+  
+  public void mirrorGull()
+  {
+    int mirrorPoint = 345;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int count = 0;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    // loop through the rows
+    for (int row = 235; row < 325; row++)
+    {
+      // loop from 13 to just before the mirror point
+      for (int col = 235; col < mirrorPoint; col++)
       {
         
         leftPixel = pixels[row][col];      
